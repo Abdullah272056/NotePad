@@ -61,4 +61,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return dataList;
     }
 
+
+    public int updateData(MyDataType data){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Constants.COLUMN_INPUT_TEXT,data.getInputValue());
+        int status = sqLiteDatabase.update(Constants.TABLE_NAME,contentValues," id=? ",new String[]{String.valueOf(data.getId())});
+        return status;
+    }
+
+
 }

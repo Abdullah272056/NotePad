@@ -37,11 +37,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String  inputValue=editText.getText().toString();
-                long id=dataBaseHelper.insertData(new MyDataType(inputValue));
-                if (id>0){
-                    Toast.makeText(MainActivity.this, "Successfully save", Toast.LENGTH_SHORT).show();
+                if (dataList.size()>0){
+
+                }else {
+                    String  inputValue=editText.getText().toString();
+                    long id=dataBaseHelper.insertData(new MyDataType(inputValue));
+                    if (id>0){
+                        Toast.makeText(MainActivity.this, "Successfully save", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+
 
             }
         });
