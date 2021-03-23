@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String  inputValue=editText.getText().toString();
-
                 long id=dataBaseHelper.insertData(new MyDataType(inputValue));
                 if (id>0){
                     Toast.makeText(MainActivity.this, "Successfully save", Toast.LENGTH_SHORT).show();
