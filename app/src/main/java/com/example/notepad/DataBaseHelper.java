@@ -1,6 +1,7 @@
 package com.example.notepad;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 
 import android.database.sqlite.SQLiteDatabase;
@@ -27,6 +28,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
    }
+
+    public long insertData(MyDataType myDataType){
+        SQLiteDatabase sqLiteDatabase=getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(Constants.COLUMN_INPUT_TEXT,myDataType.getInputValue());
+
+        long id=sqLiteDatabase.insert(Constants.TABLE_NAME,null,contentValues);
+        return id;
+
+    }
 
 
 }
