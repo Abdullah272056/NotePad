@@ -9,7 +9,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     EditText editText;
     Button saveButton;
-   
+    DataBaseHelper dataBaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         saveButton=findViewById(R.id.saveButtonId);
 
 
+        dataBaseHelper=new DataBaseHelper(MainActivity.this);
+        dataBaseHelper.getWritableDatabase();
 
 
 
