@@ -36,19 +36,12 @@ public class MainActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String  inputValue=editText.getText().toString();
                 if (dataList.size()>0){
-
+                    updateData(inputValue);
                 }else {
-                    String  inputValue=editText.getText().toString();
-                    long id=dataBaseHelper.insertData(new MyDataType(inputValue));
-                    if (id>0){
-                        Toast.makeText(MainActivity.this, "Successfully save", Toast.LENGTH_SHORT).show();
-                    }
+                    insertData(inputValue);
                 }
-
-
-
             }
         });
 
@@ -71,6 +64,27 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void insertData(String inputValue){
+        long id=dataBaseHelper.insertData(new MyDataType(inputValue));
+        if (id>0){
+            Toast.makeText(MainActivity.this, "Successfully save", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+    private void updateData(String inputValue){
+        long status = dataBaseHelper.updateData(new MyDataType(dataList.get(0).getId(),
+                inputValue));
+        if (status==1){
+            Toast.makeText(MainActivity.this, "Successfully save", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 
 
 }
