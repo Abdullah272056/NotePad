@@ -9,13 +9,16 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     EditText editText;
     Button saveButton;
+   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // view finding
         editText=findViewById(R.id.editTextId);
         saveButton=findViewById(R.id.saveButtonId);
+
 
 
 
