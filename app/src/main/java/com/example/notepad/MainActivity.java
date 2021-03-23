@@ -2,6 +2,9 @@ package com.example.notepad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         loadData();
 
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String  inputValue=editText.getText().toString();
@@ -85,6 +88,41 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+         AlertDialog.Builder alert = new AlertDialog.Builder(
+                MainActivity.this);
+        alert.setTitle("Save Data ! ");
+        alert.setMessage("\n \nDo you want to save data ?\n");
 
+
+        alert.setCancelable(false)
+                .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String  inputValue=editText.getText().toString();
+                        if (dataList.size()>0){
+                            updateData(inputValue);
+                        }else {
+                            insertData(inputValue);
+                        }
+
+                        dialog.dismiss();
+                        finish();
+
+                    }
+                })
+            .setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                                finish();
+                            }
+                        });
+
+        final AlertDialog dialog = alert.create();
+        dialog.setCancelable(true);
+        dialog.show();
+    }
 
 }
