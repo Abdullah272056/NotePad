@@ -1,19 +1,21 @@
 package com.example.notepad;
 
-import android.content.Context;
 
 public class MyDataType {
-
     int id;
     String inputValue;
 
+
+    // constructor
     public MyDataType() {
     }
 
+    // constructor
     public MyDataType(String inputValue) {
         this.inputValue = inputValue;
     }
 
+    // constructor
     public MyDataType(int id, String inputValue) {
         this.id = id;
         this.inputValue = inputValue;

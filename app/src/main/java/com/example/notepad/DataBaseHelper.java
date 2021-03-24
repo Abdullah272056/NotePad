@@ -7,7 +7,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -25,7 +24,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Constants.CREATE_TABLE);
-        Toast.makeText(context, "On created is called", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context, "On created is called", Toast.LENGTH_SHORT).show();
     }
 
    @Override
@@ -33,6 +32,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
    }
 
+
+   // create insertData method for save new data
     public long insertData(MyDataType myDataType){
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
         ContentValues contentValues=new ContentValues();
@@ -44,6 +45,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // create getAllNotes method for retrieve all save data
     public List<MyDataType> getAllNotes(){
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         List<MyDataType> dataList = new ArrayList<>();
@@ -61,7 +63,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return dataList;
     }
 
-
+    // create updateData method for edit/change/update  save data
     public int updateData(MyDataType data){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
