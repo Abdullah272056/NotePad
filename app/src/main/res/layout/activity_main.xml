@@ -23,8 +23,8 @@
                 android:layout_height="wrap_content"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:hint="Write here...."
-                android:padding="10dp"
+                android:hint="@string/write_here"
+                android:padding="15dp"
                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </ScrollView>
 
@@ -37,8 +37,12 @@
         android:layout_height="0dp">
 
         <Button
-            android:textSize="30sp"
-            android:text="Save "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/save_data"
             android:id="@+id/saveButtonId"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
